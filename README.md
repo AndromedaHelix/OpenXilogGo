@@ -15,6 +15,8 @@ Here is a file example:
     API_KEY=""
 ```
 
+The app is built using the Flutter SDK
+
 ## Authors
 
 * **Juan Pablo Gutiérrez** - [AndromedaHelix](https://github.com/AndromedaHelix)
