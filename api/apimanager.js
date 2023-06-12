@@ -60,7 +60,6 @@ function getChannelData(serialNumber, startDate, endDate, channelName) {
     return getJSONData(relativePath);
 }
 
-
 function getDailyData(serialNumber, startDate, endDate) {
     const relativePath = `${path}Data/DailyStats/${serialNumber}/${startDate}/${endDate}/${API_KEY}`;
 
@@ -68,4 +67,4 @@ function getDailyData(serialNumber, startDate, endDate) {
     return getJSONData(relativePath);
 }
 
-/* getDailyData(2304402, "2023-06-04", "2023-06-08").then(out => console.log(out)) */
+/* getDailyData(2304420, "2023-06-02", "2023-06-05").then(out => console.log(out)) */
