@@ -3,10 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:openxiloggo/screens/home_screen.dart';
 
-void main() => runApp(const MainApp());
+void main() => runApp(const AppManager());
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class AppManager extends StatelessWidget {
+  const AppManager({super.key});
 
   @override
   Widget build(BuildContext context) {
