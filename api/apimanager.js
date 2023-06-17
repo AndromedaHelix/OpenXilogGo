@@ -15,7 +15,8 @@ const path = "https://xilogdataapi.atriumiot.com/";
 async function getJSONData(url) {
     const response = await fetch(url);
     const jsonData = await response.json();
-    return jsonData;
+    const stringData = JSON.stringify(jsonData)
+    return stringData;
 }
 
 /**
@@ -67,4 +68,6 @@ function getDailyData(serialNumber, startDate, endDate) {
     return getJSONData(relativePath);
 }
 
-/* getDailyData(2304420, "2023-06-02", "2023-06-05").then(out => console.log(out)) */
+
+getAllData().then(out => console.log(out));w
+/* getDailyData(2304402, "2023-06-02", "2023-06-05").then(out => console.log(out)) */
