@@ -13,7 +13,6 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-  int currentIndex = 0;
   late final PageController introController = PageController();
 
   @override
@@ -21,9 +20,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Scaffold(
       body: PageView(
         controller: introController,
-        onPageChanged: (index) {
-          setState() => currentIndex = index;
-        },
         children: [
           OnboardPage(
               pageController: introController,
