@@ -2,9 +2,6 @@
 /// 16 - 06  - 2023
 
 import 'package:flutter/material.dart';
-import 'package:keynetnom179/widgets/text_form.dart';
-
-import '../screens/home_screen.dart';
 
 class OnboardPage extends StatelessWidget {
   final String titleText;
