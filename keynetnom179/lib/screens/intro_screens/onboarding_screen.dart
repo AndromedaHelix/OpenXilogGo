@@ -2,7 +2,8 @@
 /// 15 - 06 - 2023
 
 import 'package:flutter/material.dart';
-import 'package:openxiloggo/widgets/onboard_page.dart';
+
+import '../../widgets/onboard_page.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});

@@ -1,7 +1,7 @@
 /// Written by Juan Pablo Gutiérrez
 
 import 'package:flutter/material.dart';
-import 'package:openxiloggo/widgets/big_text.dart';
+import 'package:keynetnom179/widgets/big_text.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

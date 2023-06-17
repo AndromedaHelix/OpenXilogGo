@@ -1,7 +1,7 @@
 /// Written by Juan Pablo Gutiérrez
 
 import 'package:flutter/material.dart';
-import 'package:openxiloggo/screens/intro_screens/onboarding_screen.dart';
+import 'package:keynetnom179/screens/intro_screens/onboarding_screen.dart';
 
 void main() => runApp(const AppManager());
 
@@ -11,7 +11,7 @@ class AppManager extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'OpenXilogGo',
+      title: 'KeynetNom179',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
