@@ -9,7 +9,7 @@ import 'api/apimanager.dart';
 Future main() async {
   await dotenv.load();
   runApp(const AppManager());
-  getAllData();
+  getDailyData("2304402", "2023-06-02", "2023-06-05");
 }
 
 class AppManager extends StatelessWidget {
