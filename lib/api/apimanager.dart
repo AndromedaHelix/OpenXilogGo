@@ -5,8 +5,6 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 String sourcePath = "https://xilogdataapi.atriumiot.com/2";
 
-Future main() async {
-  await dotenv.load(fileName: '.env');
-
-  print(dotenv.get("API_KEY"));
+void getToken(){
+    print(dotenv.get("API_KEY"));
 }
