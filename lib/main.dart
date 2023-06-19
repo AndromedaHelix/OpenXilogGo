@@ -9,7 +9,7 @@ import 'api/apimanager.dart';
 Future main() async {
   await dotenv.load();
   runApp(const AppManager());
-  getToken();
+  getAllData();
 }
 
 class AppManager extends StatelessWidget {
