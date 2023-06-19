@@ -1,9 +1,16 @@
 /// Written by Juan Pablo Gutiérrez
 
 import 'package:flutter/material.dart';
-import 'package:keynetnom179/screens/intro_screens/onboarding_screen.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() => runApp(const AppManager());
+import 'screens/intro_screens/onboarding_screen.dart';
+import 'api/apimanager.dart';
+
+Future main() async {
+  await dotenv.load();
+  runApp(const AppManager());
+  getDailyData("2304402", "2023-06-02", "2023-06-05");
+}
 
 class AppManager extends StatelessWidget {
   const AppManager({super.key});

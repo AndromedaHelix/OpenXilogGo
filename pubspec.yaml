@@ -1,4 +1,4 @@
-name: keynetnom179
+name: OpenXilogGo
 description: Open source Ovarro Xilog App 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -35,6 +35,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_dotenv: ^5.1.0
+  http: ^1.0.0
 
 
 
