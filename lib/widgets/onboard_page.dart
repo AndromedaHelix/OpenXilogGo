@@ -11,6 +11,7 @@ class OnboardPage extends StatelessWidget {
   final Color backgroundColor;
   final PageController pageController;
   final bool goNextScreen;
+  final IconData pageIcon;
 
   const OnboardPage({
     super.key,
@@ -19,6 +20,7 @@ class OnboardPage extends StatelessWidget {
     required this.nextPage,
     required this.backgroundColor,
     required this.goNextScreen,
+    required this.pageIcon,
   });
 
   @override
@@ -39,8 +41,8 @@ class OnboardPage extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                        const Icon(
-                          Icons.people,
+                        Icon(
+                          pageIcon,
                           size: 300,
                         ),
                         BigText(titleText: titleText),
