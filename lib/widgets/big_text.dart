@@ -12,10 +12,12 @@ class BigText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       titleText,
+      textAlign: TextAlign.center,
       style: const TextStyle(
         fontFamily: "Manrope",
         fontWeight: FontWeight.bold,
         fontSize: 24,
+        overflow: TextOverflow.visible
       ),
     );
   }

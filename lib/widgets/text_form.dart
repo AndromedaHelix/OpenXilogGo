@@ -8,25 +8,25 @@ class TextForm extends StatelessWidget {
       {Key? key,
       required this.text,
       required this.formText,
-      required this.padding,
+      required this.topPadding,
       required this.controller})
       : super(key: key);
 
   final String formText;
   final String text;
-  final double padding;
-  final TextEditingController controller;
+  final double topPadding;
+  final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         SizedBox(
-          height: padding,
+          height: topPadding,
         ),
         Align(
           alignment: Alignment.topLeft,
           child: Padding(
-            padding: const EdgeInsets.only(bottom: 10.0, left: 30),
+            padding: const EdgeInsets.only(bottom: 10.0),
             child: Text(
               text,
               style: const TextStyle(
@@ -39,7 +39,7 @@ class TextForm extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(bottom: 10.0, right: 30, left: 30),
+          padding: const EdgeInsets.only(bottom: 10.0),
           child: TextFormField(
             validator: (value) {
               if (value!.isEmpty) {
