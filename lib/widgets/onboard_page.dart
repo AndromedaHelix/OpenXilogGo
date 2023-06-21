@@ -54,7 +54,7 @@ class OnboardPage extends StatelessWidget {
                               ? Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const HomeScreen()))
+                                      builder: (context) => HomeScreen()))
                               : pageController.animateToPage(nextPage,
                                   duration: const Duration(milliseconds: 250),
                                   curve: Curves.easeIn);
