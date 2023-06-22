@@ -3,12 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-import '../widgets/LoggerCard.dart';
+import '../widgets/logger_card.dart';
 import '../widgets/big_text.dart';
 import '../api/apimanager.dart';
 
 class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,16 +39,14 @@ class HomeScreen extends StatelessWidget {
                           itemBuilder: ((context, index) {
                             return Column(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 LoggerCard(
                                   serial: data[index]["serial"].toString(),
                                   name: data[index]["name"].toString(),
-                                  channels:
-                                      data[index]["channels"].toString(),
-                                  latitude: data[index]["location"]
-                                          ["latitude"]
+                                  channels: data[index]["channels"].toString(),
+                                  latitude: data[index]["location"]["latitude"]
                                       .toString(),
                                   longitude: data[index]["location"]
                                           ["longitude"]
