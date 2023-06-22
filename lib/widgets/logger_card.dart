@@ -1,8 +1,7 @@
 /// Written by Juan Pablo Gutiérrez
 /// 20 - 06 - 2023
 
-import 'package:OpenXilogGo/screens/home_screen.dart';
-import 'package:OpenXilogGo/screens/intro_screens/onboarding_screen.dart';
+import 'package:OpenXilogGo/screens/logger_info_page.dart';
 import 'package:flutter/material.dart';
 
 class LoggerCard extends StatelessWidget {
@@ -24,7 +23,7 @@ class LoggerCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const OnboardingScreen())),
+          context, MaterialPageRoute(builder: (context) => LoggerInfoPage(serialNumber: serial,))),
       child: Container(
         width: MediaQuery.of(context).size.width / 1.3,
         padding: EdgeInsets.only(left: 30, right: 30, top: 10, bottom: 10),
