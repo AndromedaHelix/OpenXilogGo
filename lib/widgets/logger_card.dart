@@ -1,7 +1,7 @@
 /// Written by Juan Pablo Gutiérrez
 /// 20 - 06 - 2023
 
-import 'package:OpenXilogGo/screens/logger_info_page.dart';
+import 'package:OpenXilogGo/screens/logger/logger_info_page.dart';
 import 'package:flutter/material.dart';
 
 class LoggerCard extends StatelessWidget {
