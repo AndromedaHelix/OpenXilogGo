@@ -31,39 +31,23 @@ class DataLoggerPage extends StatelessWidget {
                 ),
                 const BigText(titleText: "Select date range"),
                 DateRangeField(
+                  /* decoration: InputDecoration(
+                    labelText: "aa"
+                  ), */
                   pickerBuilder: (context, onDateRangeChanged) {
-                    return SingleChildScrollView(
-                      child: DateRangePickerWidget(
-                        doubleMonth: false,
-                        maximumDateRangeLength: 8,
-                        minimumDateRangeLength: 1,
-                        initialDateRange:
-                            DateRange(DateTime(2022), DateTime(2023)),
-                        disabledDates: [DateTime(2023, 11, 20)],
-                        initialDisplayedDate: DateTime.now(),
-                        onDateRangeChanged: (value) => print(value),
-                      ),
+                    return DateRangePickerWidget(
+                      doubleMonth: false,
+                      maximumDateRangeLength: 8,
+                      minimumDateRangeLength: 1,
+                      initialDateRange:
+                          DateRange(DateTime(2022), DateTime(2023)),
+                      disabledDates: [DateTime(2023, 11, 20)],
+                      initialDisplayedDate: DateTime.now(),
+                      onDateRangeChanged: (value) => print(value),
+                      height: 340,
                     );
                   },
                 ),
-
-                /* CalendarDatePicker(
-                  initialDate: DateTime.now(),
-                  firstDate: new DateTime(2022),
-                  lastDate: new DateTime(2100),
-                  onDateChanged: (value) =>
-                      print("${value.year}-${value.month}-${value.day}"),
-                ), */
-                /* SizedBox(
-                  height: MediaQuery.of(context).size.height / 5.5,
-                  width: MediaQuery.of(context).size.width / 2,
-                  child: CupertinoDatePicker(
-                    onDateTimeChanged: (value) =>
-                        print("${value.hour}:${value.minute}"),
-                    use24hFormat: true,
-                    mode: CupertinoDatePickerMode.time,
-                  ),
-                ), */
               ],
             ),
           ),
