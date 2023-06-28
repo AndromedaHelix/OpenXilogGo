@@ -33,28 +33,28 @@ class HomeScreen extends StatelessWidget {
                       final data = snapshot.data;
 
                       return ListView.builder(
-                          physics: const ScrollPhysics(),
-                          shrinkWrap: false,
-                          itemCount: data!.length,
-                          itemBuilder: ((context, index) {
-                            return Column(
-                              children: [
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                LoggerCard(
-                                  serial: data[index]["serial"].toString(),
-                                  name: data[index]["name"].toString(),
-                                  channels: data[index]["channels"].toString(),
-                                  latitude: data[index]["location"]["latitude"]
-                                      .toString(),
-                                  longitude: data[index]["location"]
-                                          ["longitude"]
-                                      .toString(),
-                                )
-                              ],
-                            );
-                          }));
+                        physics: const ScrollPhysics(),
+                        shrinkWrap: false,
+                        itemCount: data!.length,
+                        itemBuilder: ((context, index) {
+                          return Column(
+                            children: [
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              LoggerCard(
+                                serial: data[index]["serial"].toString(),
+                                name: data[index]["name"].toString(),
+                                channels: data[index]["channels"].toString(),
+                                latitude: data[index]["location"]["latitude"]
+                                    .toString(),
+                                longitude: data[index]["location"]["longitude"]
+                                    .toString(),
+                              )
+                            ],
+                          );
+                        }),
+                      );
                     },
                   ),
                 ),
