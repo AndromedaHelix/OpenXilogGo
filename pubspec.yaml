@@ -37,6 +37,7 @@ dependencies:
   flutter_dotenv: ^5.1.0
   http: ^1.0.0
   flutter_date_range_picker: ^0.0.14
+  sliding_up_panel: ^2.0.0+1
 
 
 
