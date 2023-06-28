@@ -12,8 +12,8 @@ import 'package:flutter/material.dart';
 
 class LoggerInfoPage extends StatelessWidget {
   final serialNumber;
-  final spacing = 20;
-  const LoggerInfoPage({required this.serialNumber});
+  static const spacing = 20;
+  LoggerInfoPage({super.key, required this.serialNumber});
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +21,14 @@ class LoggerInfoPage extends StatelessWidget {
       body: Center(
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+            padding: EdgeInsets.only(
+                left: spacing.toDouble(), right: spacing.toDouble()),
             child: Column(
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    BackIcon(color: Colors.black),
+                    BackIcon(),
                     Text(serialNumber),
                   ],
                 ),
