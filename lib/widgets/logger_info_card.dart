@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../constants.dart';
+
 /// Written by Juan Pablo Gutiérrez
 /// 24 - 06 - 2023
 
@@ -24,7 +26,7 @@ class LoggerInfoCard extends StatelessWidget {
           children: [
             Text(
               "$infoType Data",
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: loggeInfoStyle,
             ),
           ],
         ),

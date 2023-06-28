@@ -1,3 +1,4 @@
+import 'package:OpenXilogGo/constants.dart';
 import 'package:flutter/material.dart';
 
 /// Written by Juan Pablo Gutiérrez
@@ -13,12 +14,7 @@ class BigText extends StatelessWidget {
     return Text(
       titleText,
       textAlign: TextAlign.center,
-      style: const TextStyle(
-        fontFamily: "Manrope",
-        fontWeight: FontWeight.bold,
-        fontSize: 24,
-        overflow: TextOverflow.visible
-      ),
+      style: bigTextStyle
     );
   }
 }

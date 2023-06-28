@@ -1,11 +1,11 @@
 /// Written by Juan Pablo Gutiérrez
 /// 12 - 10 - 2022
 
+import 'package:OpenXilogGo/constants.dart';
 import 'package:flutter/material.dart';
 
 class BackIcon extends StatelessWidget {
-  final Color color;
-  const BackIcon({super.key, required this.color});
+  const BackIcon({super.key });
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +17,7 @@ class BackIcon extends StatelessWidget {
         ),
         Text(
           "Back",
-          style: TextStyle(
-            fontFamily: "Manrope",
-            fontSize: 18,
-            color: color,
-          ),
+          style: defaultStyle
         ),
       ],
     );
