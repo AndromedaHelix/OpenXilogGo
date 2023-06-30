@@ -1,4 +1,6 @@
 import 'package:OpenXilogGo/screens/home_screen.dart';
+import 'package:OpenXilogGo/screens/logger/data/data_channel.dart';
+import 'package:OpenXilogGo/screens/logger/data/data_daily.dart';
 import 'package:OpenXilogGo/screens/logger/data/data_logger.dart';
 import 'package:OpenXilogGo/widgets/back_icon.dart';
 import 'package:OpenXilogGo/widgets/big_text.dart';
@@ -45,11 +47,20 @@ class LoggerInfoPage extends StatelessWidget {
                 SizedBox(
                   height: spacing.toDouble(),
                 ),
-                LoggerInfoCard(infoType: "Daily", nextPage: HomeScreen()),
+                LoggerInfoCard(
+                    infoType: "Daily",
+                    nextPage: DataDailyPage(
+                      serialNumber: serialNumber,
+                    )),
                 SizedBox(
                   height: spacing.toDouble(),
                 ),
-                LoggerInfoCard(infoType: "Channel", nextPage: HomeScreen()),
+                LoggerInfoCard(
+                  infoType: "Channel",
+                  nextPage: DataChannelPage(
+                    serialNumber: serialNumber,
+                  ),
+                ),
                 SizedBox(
                   height: spacing.toDouble(),
                 ),
