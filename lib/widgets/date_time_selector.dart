@@ -21,10 +21,13 @@ class DateTimeSelector extends StatefulWidget {
   final RequestType requestType;
   final PanelController controller;
 
+  final ValueChanged<Set<String>> onchanged;
+
   const DateTimeSelector(
       {required this.serialNumber,
       required this.requestType,
       required this.controller,
+      required this.onchanged,
       super.key});
 
   @override
@@ -38,7 +41,7 @@ class _DateTimeSelectorState extends State<DateTimeSelector> {
   DateTime initialTime = DateTime.now();
   DateTime lastTime = DateTime.now().add(const Duration(hours: 1));
 
-  Set<String> searchTimeAPI(
+  Set<String> processTimeInput(
       DateRange range, DateTime initialTime, DateTime lastTime) {
     /* Handles date formatting */
     String initYear = range.start.year.toString();
@@ -59,24 +62,31 @@ class _DateTimeSelectorState extends State<DateTimeSelector> {
 
     /* Handles time formatting */
 
-    String initHour = initialTime.hour.toString();
-    String initMinute = initialTime.minute.toString();
+    if (widget.requestType == RequestType.dateTime) {
+      String initHour = initialTime.hour.toString();
+      String initMinute = initialTime.minute.toString();
 
-    if (initHour.length == 1) initHour = "0$initHour";
+      if (initHour.length == 1) initHour = "0$initHour";
 
-    if (initMinute.length == 1) initMinute = "0$initMinute";
+      if (initMinute.length == 1) initMinute = "0$initMinute";
 
-    String lastHour = lastTime.hour.toString();
-    String lastMinute = lastTime.minute.toString();
+      String lastHour = lastTime.hour.toString();
+      String lastMinute = lastTime.minute.toString();
 
-    if (lastHour.length == 1) lastHour = "0$lastHour";
+      if (lastHour.length == 1) lastHour = "0$lastHour";
 
-    if (lastMinute.length == 1) lastMinute = "0$lastMinute";
+      if (lastMinute.length == 1) lastMinute = "0$lastMinute";
 
-    return {
-      "$initYear-$initMonth-$initDay $initHour:$initMinute",
-      "$finYear-$finMonth-$finday $lastHour:$lastMinute"
-    };
+      return {
+        "$initYear-$initMonth-$initDay $initHour:$initMinute",
+        "$finYear-$finMonth-$finday $lastHour:$lastMinute"
+      };
+    }
+
+     return {
+        "$initYear-$initMonth-$initDay",
+        "$finYear-$finMonth-$finday"
+      };
   }
 
   @override
@@ -154,13 +164,8 @@ class _DateTimeSelectorState extends State<DateTimeSelector> {
               : const Text(""),
           ElevatedButton(
             onPressed: () {
-              var list = searchTimeAPI(dataRange, initialTime, lastTime);
-              var first = list.first;
-              var second = list.last;
-
-              var secondList =
-                  getLoggerData(widget.serialNumber, first, second);
-              secondList.then((value) => print(value));
+              widget.onchanged(
+                  processTimeInput(dataRange, initialTime, lastTime));
 
               widget.controller.animatePanelToPosition(1,
                   duration: const Duration(milliseconds: 225),
