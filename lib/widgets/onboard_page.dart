@@ -45,7 +45,7 @@ class OnboardPage extends StatelessWidget {
                           pageIcon,
                           size: 300,
                         ),
-                        BigText(titleText: titleText),
+                        BigText(titleText: titleText, textAlign: TextAlign.center,),
                       ],
                     ),
                     Align(
@@ -56,7 +56,7 @@ class OnboardPage extends StatelessWidget {
                               ? Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => HomeScreen()))
+                                      builder: (context) => const HomeScreen()))
                               : pageController.animateToPage(nextPage,
                                   duration: const Duration(milliseconds: 250),
                                   curve: Curves.easeIn);
