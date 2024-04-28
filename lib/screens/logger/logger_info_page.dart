@@ -8,8 +8,10 @@ import 'package:OpenXilogGo/screens/logger/data/data_daily.dart';
 import 'package:OpenXilogGo/screens/logger/data/data_logger.dart';
 import 'package:OpenXilogGo/widgets/back_icon.dart';
 import 'package:OpenXilogGo/widgets/big_text.dart';
+import 'package:OpenXilogGo/widgets/gradient_scaffold.dart';
 import 'package:OpenXilogGo/widgets/logger_info_card.dart';
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
 
 class LoggerInfoPage extends StatelessWidget {
   final String serialNumber;
@@ -19,12 +21,16 @@ class LoggerInfoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return GradientScaffold(
+      gradient: const SweepGradient(
+        center: FractionalOffset.topLeft,
+        transform: GradientRotation(-math.pi / .8),
+        colors: [paletePurple, paleteLightBlue, paleteTeal],
+      ),
       body: Center(
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.only(
-                left: spacing.toDouble(), right: spacing.toDouble()),
+            padding: const EdgeInsets.only(left: 15.0, right: 15.0),
             child: Column(
               children: [
                 Row(

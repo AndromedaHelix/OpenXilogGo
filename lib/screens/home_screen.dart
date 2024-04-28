@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
             padding: const EdgeInsets.only(left: 15.0, right: 15.0),
             child: Column(
               children: [
-                const IntroBar(),
+                IntroBar(),
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.only(left: 30, right: 30),
