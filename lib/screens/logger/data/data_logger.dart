@@ -12,7 +12,7 @@ import '../../../widgets/back_icon.dart';
 class DataLoggerPage extends StatefulWidget {
   final String serialNumber;
 
-  DataLoggerPage({required this.serialNumber, super.key});
+  const DataLoggerPage({required this.serialNumber, super.key});
 
   @override
   State<DataLoggerPage> createState() => _DataLoggerPageState();
@@ -23,14 +23,16 @@ class _DataLoggerPageState extends State<DataLoggerPage> {
 
   PanelController controller = PanelController();
 
-  void getAPI(Set<String> uriList) {
-    var first = uriList.first;
-    var second = uriList.last;
+  void getAPI(Set<String> dateList) {
+    var firstDate = dateList.first;
+    var secondDate = dateList.last;
+
+    // print(firstDate);
 
     setState(() {
-      dataList = getLoggerData(widget.serialNumber, first, second);
+      dataList = getLoggerData(widget.serialNumber, firstDate, secondDate);
 
-      dataList!.then((value) => print(value));
+      // dataList!.then((value) => print(value));
     });
   }
 
@@ -55,7 +57,7 @@ class _DataLoggerPageState extends State<DataLoggerPage> {
                   final data = snapshot.data;
 
                   if (data!.isEmpty) {
-                    return Center(
+                    return const Center(
                       child: Text(
                         "This logger contains no data",
                         style: defaultStyle,
@@ -72,9 +74,9 @@ class _DataLoggerPageState extends State<DataLoggerPage> {
                       itemBuilder: (context, index) {
                         return Column(
                           children: [
-                            Text("Unit: ${data![index]["unit"].toString()}"),
+                            Text("Unit: ${data[index]["unit"].toString()}"),
                             Text(
-                                "Channel Name: ${data![index]["channelName"].toString()}"),
+                                "Channel Name: ${data[index]["channelName"].toString()}"),
                             const Text("Data: "),
                             SizedBox(
                               height:
@@ -108,7 +110,7 @@ class _DataLoggerPageState extends State<DataLoggerPage> {
                                                   height: 20,
                                                 ),
                                                 Container(
-                                                  padding: EdgeInsets.only(
+                                                  padding: const EdgeInsets.only(
                                                       top: 8.0,
                                                       bottom: 8.0,
                                                       left: 10.0,
@@ -144,9 +146,9 @@ class _DataLoggerPageState extends State<DataLoggerPage> {
                   );
                 },
               )
-            : Center(
+            : const Center(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 0, left: 20, right: 20),
+                  padding: EdgeInsets.only(top: 0, left: 20, right: 20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -158,7 +160,7 @@ class _DataLoggerPageState extends State<DataLoggerPage> {
                       SizedBox(
                         height: 20,
                       ),
-                      const CircularProgressIndicator(),
+                      CircularProgressIndicator(),
                     ],
                   ),
                 ),

@@ -1,3 +1,6 @@
+/// Written by Juan Pablo Gutiérrez
+/// 30 - 06 - 2023
+
 import 'package:OpenXilogGo/api/apimanager.dart';
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
@@ -5,9 +8,6 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 import '../../../constants.dart';
 import '../../../widgets/back_icon.dart';
 import '../../../widgets/date_time_selector.dart';
-
-/// Written by Juan Pablo Gutiérrez
-/// 30 - 06 - 2023
 
 class DataChannelPage extends StatefulWidget {
   final String serialNumber;
@@ -27,13 +27,13 @@ class _DataChannelPageState extends State<DataChannelPage> {
     var first = uriList.first;
     var second = uriList.last;
 
-    var channelName = "Flow 1";
+    var channelName = "Flow  1";
 
     setState(() {
       dataList =
           getChannelData(widget.serialNumber, first, second, channelName);
 
-      dataList!.then((value) => print(value));
+      // dataList!.then((value) => print(value));
     });
   }
 
@@ -58,7 +58,7 @@ class _DataChannelPageState extends State<DataChannelPage> {
                   final data = snapshot.data;
 
                   if (data!.isEmpty) {
-                    return Center(
+                    return const Center(
                       child: Text(
                         "This logger contains no data",
                         style: defaultStyle,
@@ -75,9 +75,9 @@ class _DataChannelPageState extends State<DataChannelPage> {
                       itemBuilder: (context, index) {
                         return Column(
                           children: [
-                            Text("Unit: ${data![index]["unit"].toString()}"),
+                            Text("Unit: ${data[index]["unit"].toString()}"),
                             Text(
-                                "Channel Name: ${data![index]["channelName"].toString()}"),
+                                "Channel Name: ${data[index]["channelName"].toString()}"),
                             const Text("Data: "),
                             SizedBox(
                               height:
@@ -111,11 +111,12 @@ class _DataChannelPageState extends State<DataChannelPage> {
                                                   height: 20,
                                                 ),
                                                 Container(
-                                                  padding: EdgeInsets.only(
-                                                      top: 8.0,
-                                                      bottom: 8.0,
-                                                      left: 10.0,
-                                                      right: 10.0),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 8.0,
+                                                          bottom: 8.0,
+                                                          left: 10.0,
+                                                          right: 10.0),
                                                   decoration: BoxDecoration(
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -147,9 +148,9 @@ class _DataChannelPageState extends State<DataChannelPage> {
                   );
                 },
               )
-            : Center(
+            : const Center(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 0, left: 20, right: 20),
+                  padding: EdgeInsets.only(top: 0, left: 20, right: 20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -161,7 +162,7 @@ class _DataChannelPageState extends State<DataChannelPage> {
                       SizedBox(
                         height: 20,
                       ),
-                      const CircularProgressIndicator(),
+                      CircularProgressIndicator(),
                     ],
                   ),
                 ),

@@ -25,7 +25,7 @@ class LoggerInfoCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "$infoType Data",
+              infoType,
               style: loggeInfoStyle,
             ),
           ],

@@ -4,10 +4,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_date_range_picker/flutter_date_range_picker.dart';
-import 'package:http/http.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
-import '../api/apimanager.dart';
 import '../constants.dart';
 import 'big_text.dart';
 
@@ -106,6 +104,7 @@ class _DateTimeSelectorState extends State<DateTimeSelector> {
         children: [
           const BigText(
             titleText: "Select date and time range",
+            textAlign: TextAlign.center,
           ),
           DateRangeField(
             decoration: InputDecoration(labelText: "${dataRange}"),

@@ -1,21 +1,21 @@
-import 'package:OpenXilogGo/screens/home_screen.dart';
+/// Written by Juan Pablo Gutiérrez
+/// 21 - 06 - 2023
+
+import 'package:OpenXilogGo/api/excel.dart';
+import 'package:OpenXilogGo/constants.dart';
 import 'package:OpenXilogGo/screens/logger/data/data_channel.dart';
 import 'package:OpenXilogGo/screens/logger/data/data_daily.dart';
 import 'package:OpenXilogGo/screens/logger/data/data_logger.dart';
 import 'package:OpenXilogGo/widgets/back_icon.dart';
 import 'package:OpenXilogGo/widgets/big_text.dart';
 import 'package:OpenXilogGo/widgets/logger_info_card.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-/// Written by Juan Pablo Gutiérrez
-/// 21 - 06 - 2023
-
 class LoggerInfoPage extends StatelessWidget {
-  final serialNumber;
+  final String serialNumber;
   static const spacing = 20;
-  LoggerInfoPage({super.key, required this.serialNumber});
+
+  const LoggerInfoPage({super.key, required this.serialNumber});
 
   @override
   Widget build(BuildContext context) {
@@ -30,16 +30,18 @@ class LoggerInfoPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    BackIcon(),
+                    const BackIcon(),
                     Text(serialNumber),
                   ],
                 ),
-                const BigText(titleText: "Select desired information"),
+                const BigText(
+                    titleText: "Select desired information",
+                    textAlign: TextAlign.center),
                 SizedBox(
                   height: spacing.toDouble(),
                 ),
                 LoggerInfoCard(
-                  infoType: "Logger",
+                  infoType: "Logger Data",
                   nextPage: DataLoggerPage(
                     serialNumber: serialNumber,
                   ),
@@ -48,7 +50,7 @@ class LoggerInfoPage extends StatelessWidget {
                   height: spacing.toDouble(),
                 ),
                 LoggerInfoCard(
-                    infoType: "Daily",
+                    infoType: "Daily Data",
                     nextPage: DataDailyPage(
                       serialNumber: serialNumber,
                     )),
@@ -56,13 +58,37 @@ class LoggerInfoPage extends StatelessWidget {
                   height: spacing.toDouble(),
                 ),
                 LoggerInfoCard(
-                  infoType: "Channel",
+                  infoType: "Channel Data",
                   nextPage: DataChannelPage(
                     serialNumber: serialNumber,
                   ),
                 ),
                 SizedBox(
                   height: spacing.toDouble(),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    var x = processTimeInput();
+                    computeExcel(serialNumber, x);
+                  },
+                  child: Container(
+                    height: 120,
+                    width: MediaQuery.of(context).size.width / 1.3,
+                    padding: const EdgeInsets.only(
+                        left: 30, right: 30, top: 10, bottom: 10),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(25),
+                        color: Colors.blue),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Download Excel Data",
+                          style: loggeInfoStyle,
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),

@@ -5,16 +5,17 @@ import 'package:flutter/material.dart';
 /// 15 - 06 - 2023
 
 class BigText extends StatelessWidget {
-  final titleText;
+  final String titleText;
+  final TextAlign textAlign;
 
-  const BigText({super.key, required this.titleText});
+  const BigText({super.key, required this.titleText, required this.textAlign});
 
   @override
   Widget build(BuildContext context) {
     return Text(
       titleText,
-      textAlign: TextAlign.center,
-      style: bigTextStyle
+      textAlign: textAlign,
+      style: titleTextStyle
     );
   }
 }

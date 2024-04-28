@@ -1,3 +1,6 @@
+/// Written by Juan Pablo Gutiérrez
+/// 30 - 06 - 2023
+
 import 'package:OpenXilogGo/api/apimanager.dart';
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
@@ -5,9 +8,6 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 import '../../../constants.dart';
 import '../../../widgets/back_icon.dart';
 import '../../../widgets/date_time_selector.dart';
-
-/// Written by Juan Pablo Gutiérrez
-/// 30 - 06 - 2023
 
 class DataDailyPage extends StatefulWidget {
   final String serialNumber;
@@ -30,7 +30,7 @@ class _DataDailyPageState extends State<DataDailyPage> {
     setState(() {
       dataList = getDailyData(widget.serialNumber, first, second);
 
-      dataList!.then((value) => print(value));
+      // dataList!.then((value) => print(value));
     });
   }
 
@@ -55,7 +55,7 @@ class _DataDailyPageState extends State<DataDailyPage> {
                   final data = snapshot.data;
 
                   if (data!.isEmpty) {
-                    return Center(
+                    return const Center(
                       child: Text(
                         "This logger contains no data",
                         style: defaultStyle,
@@ -72,7 +72,7 @@ class _DataDailyPageState extends State<DataDailyPage> {
                       itemBuilder: (context, index) {
                         return Column(
                           children: [
-                            Text("Channel Name: ${data![index]["channelName"].toString()}"),
+                            Text("Channel Name: ${data[index]["channelName"].toString()}"),
                             
                             const Text("Daily Stats: "),
                             SizedBox(
@@ -103,7 +103,7 @@ class _DataDailyPageState extends State<DataDailyPage> {
                                               height: 20,
                                             ),
                                             Container(
-                                              padding: EdgeInsets.only(
+                                              padding: const EdgeInsets.only(
                                                   top: 8.0,
                                                   bottom: 8.0,
                                                   left: 10.0,
@@ -145,9 +145,9 @@ class _DataDailyPageState extends State<DataDailyPage> {
                   );
                 },
               )
-            : Center(
+            : const Center(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 0, left: 20, right: 20),
+                  padding: EdgeInsets.only(top: 0, left: 20, right: 20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -159,7 +159,7 @@ class _DataDailyPageState extends State<DataDailyPage> {
                       SizedBox(
                         height: 20,
                       ),
-                      const CircularProgressIndicator(),
+                      CircularProgressIndicator(),
                     ],
                   ),
                 ),
