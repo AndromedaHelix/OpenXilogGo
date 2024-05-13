@@ -7,6 +7,7 @@ import 'package:OpenXilogGo/widgets/back_bar.dart';
 import 'package:OpenXilogGo/widgets/gradient_scaffold.dart';
 import 'package:OpenXilogGo/widgets/selection_button.dart';
 import 'package:OpenXilogGo/widgets/standard_spacer.dart';
+import 'package:OpenXilogGo/widgets/text_form.dart';
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
@@ -25,17 +26,17 @@ class DataChannelPage extends StatefulWidget {
 class _DataChannelPageState extends State<DataChannelPage> {
   Future<List<dynamic>?>? dataList;
 
+  TextEditingController channelController = TextEditingController();
+
   PanelController controller = PanelController();
 
   void getAPI(Set<String> uriList) {
     var first = uriList.first;
     var second = uriList.last;
 
-    var channelName = "Flow%201";
-
     setState(() {
       dataList =
-          getChannelData(widget.serialNumber, first, second, channelName);
+          getChannelData(widget.serialNumber, first, second, channelController.text);
     });
   }
 
@@ -120,6 +121,24 @@ class _DataChannelPageState extends State<DataChannelPage> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   BackBar(serialNumber: widget.serialNumber),
+                  const StandardSpacer(height: standartSpacerHeight),
+                  Container(
+                    padding: const EdgeInsets.only(
+                      top: 10.0,
+                      bottom: 10.0,
+                      left: 10.0,
+                      right: 10.0,
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: paletePurple.withAlpha(150),
+                    ),
+                    child: TextForm(
+                        text: "Enter channel name",
+                        inputText: "Enter channel",
+                        padding: 10,
+                        controller: channelController),
+                  ),
                   const StandardSpacer(height: standartSpacerHeight),
                   DateTimeSelector(
                     serialNumber: widget.serialNumber,
