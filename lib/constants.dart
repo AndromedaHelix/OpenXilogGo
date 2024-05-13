@@ -77,3 +77,14 @@ const SweepGradient backGroundGradient = SweepGradient(
     paleteBlue,
   ],
 );
+
+
+const SweepGradient secondaryBackGroundGradient = SweepGradient(
+  center: FractionalOffset.topLeft,
+  transform: GradientRotation(-math.pi / 4),
+  colors: [
+    paletePurple,
+    paleteBlue,
+    paleteLightBlue,
+  ],
+);
