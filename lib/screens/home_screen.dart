@@ -1,7 +1,7 @@
 /// Written by Juan Pablo Gutiérrez
 
 import 'package:OpenXilogGo/constants.dart';
-import 'package:OpenXilogGo/widgets/MenuBar.dart';
+import 'package:OpenXilogGo/widgets/menu_bar.dart';
 import 'package:OpenXilogGo/widgets/gradient_scaffold.dart';
 import 'package:flutter/material.dart';
 

@@ -3,7 +3,7 @@
 
 import 'package:OpenXilogGo/constants.dart';
 import 'package:OpenXilogGo/screens/logger/logger_info_page.dart';
-import 'package:OpenXilogGo/widgets/MultiStyleText.dart';
+import 'package:OpenXilogGo/widgets/multi_style_text.dart';
 import 'package:flutter/material.dart';
 
 class LoggerCard extends StatelessWidget {
