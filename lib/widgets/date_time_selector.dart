@@ -110,7 +110,7 @@ class _DateTimeSelectorState extends State<DateTimeSelector> {
             DateRangeField(
               decoration: InputDecoration(
                 label: Text(
-                  "${dataRange}",
+                  "$dataRange",
                   style: substitleStyle,
                 ),
               ),
@@ -135,7 +135,7 @@ class _DateTimeSelectorState extends State<DateTimeSelector> {
                     children: [
                       Column(
                         children: [
-                          Text("Initial Time", style: defaultStyle),
+                          const Text("Initial Time", style: defaultStyle),
                           SizedBox(
                             height: MediaQuery.of(context).size.height / 6,
                             width: MediaQuery.of(context).size.width / 2.5,
@@ -149,7 +149,7 @@ class _DateTimeSelectorState extends State<DateTimeSelector> {
                       ),
                       Column(
                         children: [
-                          Text("Last Time", style: defaultStyle),
+                          const Text("Last Time", style: defaultStyle),
                           SizedBox(
                             height: MediaQuery.of(context).size.height / 6,
                             width: MediaQuery.of(context).size.width / 2.5,

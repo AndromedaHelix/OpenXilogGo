@@ -1,7 +1,6 @@
 /// Written by Juan Pablo Gutiérrez
 /// 27 - 06 - 2023
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 

@@ -27,8 +27,8 @@ void computeExcel(String serialNumber, Set<String> uriList) async {
 
     // Write headers
     sheet.appendRow([
-      TextCellValue('Timestamp'),
-      TextCellValue('Value'),
+      const TextCellValue('Timestamp'),
+      const TextCellValue('Value'),
     ]);
 
     // Iterate through the data
@@ -53,6 +53,7 @@ void computeExcel(String serialNumber, Set<String> uriList) async {
     File(outputFile)
       ..createSync(recursive: true)
       ..writeAsBytesSync(fileBytes);
+    // ignore: avoid_print
     print("Excel file saved successfully!");
   }
 }
