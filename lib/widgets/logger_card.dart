@@ -32,10 +32,16 @@ class LoggerCard extends StatelessWidget {
                   ))),
       child: Container(
         width: MediaQuery.of(context).size.width / 1.3,
-        padding:
-            const EdgeInsets.only(left: 30, right: 30, top: 10, bottom: 10),
+        padding: const EdgeInsets.only(
+          left: 30,
+          right: 30,
+          top: 10,
+          bottom: 10,
+        ),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(25), color: Colors.red),
+          borderRadius: BorderRadius.circular(25),
+          color: paleteLightBlue.withAlpha(100),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
