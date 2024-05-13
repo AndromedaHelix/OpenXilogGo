@@ -5,20 +5,19 @@ import 'package:OpenXilogGo/constants.dart';
 import 'package:flutter/material.dart';
 
 class BackIcon extends StatelessWidget {
-  const BackIcon({super.key });
+  const BackIcon({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       children: [
-        const BackButton(),
-        const SizedBox(
+        BackButton(
+          color: Colors.white,
+        ),
+        SizedBox(
           width: 5,
         ),
-        Text(
-          "Back",
-          style: defaultStyle
-        ),
+        Text("Back", style: defaultStyle),
       ],
     );
   }
