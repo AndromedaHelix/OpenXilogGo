@@ -33,7 +33,7 @@ Future<List<dynamic>?> getAllData() async {
 Future<List<dynamic>?> getLoggerData(
     String serialNumber, String startDate, String endDate) async {
   final uri = "${sourcePath}Data/All/$serialNumber/$startDate/$endDate/$apiKey";
-
+  
   final response = await getResponse(uri);
 
   return getAsList(response);

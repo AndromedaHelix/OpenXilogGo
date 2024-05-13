@@ -2,7 +2,12 @@
 /// 24 - 06 - 2023
 
 import 'package:OpenXilogGo/constants.dart';
+import 'package:OpenXilogGo/screens/logger/data/logger/logger_data_page.dart';
+import 'package:OpenXilogGo/widgets/back_bar.dart';
 import 'package:OpenXilogGo/widgets/date_time_selector.dart';
+import 'package:OpenXilogGo/widgets/gradient_scaffold.dart';
+import 'package:OpenXilogGo/widgets/selection_button.dart';
+import 'package:OpenXilogGo/widgets/standard_spacer.dart';
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
@@ -27,20 +32,18 @@ class _DataLoggerPageState extends State<DataLoggerPage> {
     var firstDate = dateList.first;
     var secondDate = dateList.last;
 
-    // print(firstDate);
-
     setState(() {
       dataList = getLoggerData(widget.serialNumber, firstDate, secondDate);
-
-      // dataList!.then((value) => print(value));
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return GradientScaffold(
+      gradient: backGroundGradient,
       body: SlidingUpPanel(
         controller: controller,
+        padding: const EdgeInsets.only(left: 15.0, right: 15.0),
         borderRadius: BorderRadius.circular(30),
         maxHeight: MediaQuery.of(context).size.height / 1.2,
         backdropEnabled: true,
@@ -74,71 +77,15 @@ class _DataLoggerPageState extends State<DataLoggerPage> {
                       itemBuilder: (context, index) {
                         return Column(
                           children: [
-                            Text("Unit: ${data[index]["unit"].toString()}"),
-                            Text(
-                                "Channel Name: ${data[index]["channelName"].toString()}"),
-                            const Text("Data: "),
-                            SizedBox(
-                              height:
-                                  (MediaQuery.of(context).size.height / 1.2) /
-                                      1.2,
-                              child: ListView.builder(
-                                physics: const ScrollPhysics(),
-                                shrinkWrap: false,
-                                itemCount: data[index]["data"].length,
-                                itemBuilder: (context, secondIndex) {
-                                  return Column(
-                                    children: [
-                                      Text(
-                                          "Type: ${data[index]["data"][secondIndex]["type"]}"),
-                                      SizedBox(
-                                        height: (MediaQuery.of(context)
-                                                    .size
-                                                    .height /
-                                                1.2) /
-                                            1,
-                                        child: ListView.builder(
-                                          physics: const ScrollPhysics(),
-                                          shrinkWrap: false,
-                                          itemCount: data[index]["data"]
-                                                  [secondIndex]["data"]
-                                              .length,
-                                          itemBuilder: (context, dataIndex) {
-                                            return Column(
-                                              children: [
-                                                const SizedBox(
-                                                  height: 20,
-                                                ),
-                                                Container(
-                                                  padding: const EdgeInsets.only(
-                                                      top: 8.0,
-                                                      bottom: 8.0,
-                                                      left: 10.0,
-                                                      right: 10.0),
-                                                  decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              30),
-                                                      color: Colors.blue),
-                                                  child: Column(
-                                                    children: [
-                                                      Text(
-                                                          "Timestamp: ${data[index]["data"][secondIndex]["data"][dataIndex]["timestamp"]}"),
-                                                      Text(
-                                                          "Value: ${data[index]["data"][secondIndex]["data"][dataIndex]["value"]}"),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        ),
-                                      )
-                                    ],
-                                  );
-                                },
-                              ),
-                            ),
+                            SelectionButton(
+                                data: data,
+                                index: index,
+                                nextWidgetScreen: LoggerDataPage(
+                                  data: data,
+                                  index: index,
+                                  serialNumber: widget.serialNumber,
+                                )),
+                            const StandardSpacer(height: standartSpacerHeight),
                           ],
                         );
                       },
@@ -172,13 +119,7 @@ class _DataLoggerPageState extends State<DataLoggerPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const BackIcon(),
-                      Text(widget.serialNumber),
-                    ],
-                  ),
+                  BackBar(serialNumber: widget.serialNumber),
                   DateTimeSelector(
                     serialNumber: widget.serialNumber,
                     requestType: RequestType.dateTime,
