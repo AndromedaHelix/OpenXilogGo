@@ -3,18 +3,21 @@
 /// 12 05 2024
 
 import 'package:OpenXilogGo/constants.dart';
+import 'package:OpenXilogGo/widgets/standard_spacer.dart';
 import 'package:flutter/material.dart';
 
 class SelectionButton extends StatelessWidget {
   final List<dynamic> data;
   final int index;
   final Widget nextWidgetScreen;
+  final bool showUnit;
 
   const SelectionButton(
       {super.key,
       required this.data,
       required this.index,
-      required this.nextWidgetScreen});
+      required this.nextWidgetScreen,
+      this.showUnit = true});
 
   @override
   Widget build(BuildContext context) {
@@ -41,13 +44,16 @@ class SelectionButton extends StatelessWidget {
                 style: loggeInfoStyle,
               ),
             ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "Unit: ${data[index]["unit"].toString()}",
-                style: smallerDefaultStyle,
-              ),
-            ),
+            showUnit
+                ? Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Unit: ${data[index]["unit"].toString()}",
+                      style: smallerDefaultStyle,
+                    ),
+                  )
+                : const SizedBox(),
+            const StandardSpacer(height: smallerSpacerHeight),
             Align(
               alignment: Alignment.bottomRight,
               child: Container(

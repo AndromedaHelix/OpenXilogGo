@@ -14,37 +14,40 @@ class IntroBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(
-          height: 20,
-        ),
-        const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            BigText(titleText: "Welcome back", textAlign: TextAlign.center),
-          ],
-        ),
-        const SizedBox(
-          height: 5,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Flexible(
-              child: Text(
-                "Device Key: $apiKey",
-                textAlign: TextAlign.left,
-                overflow: TextOverflow.visible,
-                style: substitleStyle,
+    return Padding(
+      padding: const EdgeInsets.only(left: 12.5, right: 12.5),
+      child: Column(
+        children: [
+          const SizedBox(
+            height: 20,
+          ),
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              BigText(titleText: "Welcome back", textAlign: TextAlign.center),
+            ],
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Flexible(
+                child: Text(
+                  "Device Key: $apiKey",
+                  textAlign: TextAlign.left,
+                  overflow: TextOverflow.visible,
+                  style: substitleStyle,
+                ),
               ),
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-      ],
+            ],
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+        ],
+      ),
     );
   }
 }

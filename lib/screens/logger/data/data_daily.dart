@@ -3,7 +3,6 @@
 
 import 'package:OpenXilogGo/api/apimanager.dart';
 import 'package:OpenXilogGo/screens/logger/data/daily/daily_data_page.dart';
-import 'package:OpenXilogGo/screens/logger/data/logger/logger_data_page.dart';
 import 'package:OpenXilogGo/widgets/back_bar.dart';
 import 'package:OpenXilogGo/widgets/gradient_scaffold.dart';
 import 'package:OpenXilogGo/widgets/selection_button.dart';
@@ -12,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import '../../../constants.dart';
-import '../../../widgets/back_icon.dart';
 import '../../../widgets/date_time_selector.dart';
 
 class DataDailyPage extends StatefulWidget {
