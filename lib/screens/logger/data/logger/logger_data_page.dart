@@ -5,6 +5,7 @@
 import 'package:OpenXilogGo/constants.dart';
 import 'package:OpenXilogGo/widgets/back_bar.dart';
 import 'package:OpenXilogGo/widgets/gradient_scaffold.dart';
+import 'package:OpenXilogGo/widgets/info_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -27,7 +28,7 @@ class _LoggerDataPageState extends State<LoggerDataPage> {
   @override
   Widget build(BuildContext context) {
     return GradientScaffold(
-      gradient: backGroundGradient,
+      gradient: secondaryBackGroundGradient,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 15.0, right: 15.0),
@@ -65,31 +66,14 @@ class _LoggerDataPageState extends State<LoggerDataPage> {
                                 .data[widget.index]["data"][secondIndex]["data"]
                                 .length,
                             itemBuilder: (context, dataIndex) {
-                              return Column(
-                                children: [
-                                  const SizedBox(
-                                    height: 20,
-                                  ),
-                                  Container(
-                                    padding: const EdgeInsets.only(
-                                        top: 12.0,
-                                        bottom: 12.0,
-                                        left: 25.0,
-                                        right: 25.0),
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(15),
-                                        color: Colors.blue),
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                            "Timestamp: ${widget.data[widget.index]["data"][secondIndex]["data"][dataIndex]["timestamp"]}"),
-                                        Text(
-                                            "Value: ${widget.data[widget.index]["data"][secondIndex]["data"][dataIndex]["value"]}"),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              );
+                              return InfoBox(
+                                  timeStampData: widget.data[widget.index]
+                                          ["data"][secondIndex]["data"]
+                                      [dataIndex]["timestamp"],
+                                  valueData: widget.data[widget.index]["data"]
+                                          [secondIndex]["data"][dataIndex]
+                                          ["value"]
+                                      .toString());
                             },
                           ),
                         )

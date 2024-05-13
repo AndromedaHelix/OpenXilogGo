@@ -120,6 +120,7 @@ class _DataLoggerPageState extends State<DataLoggerPage> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   BackBar(serialNumber: widget.serialNumber),
+                  const StandardSpacer(height: standartSpacerHeight),
                   DateTimeSelector(
                     serialNumber: widget.serialNumber,
                     requestType: RequestType.dateTime,
