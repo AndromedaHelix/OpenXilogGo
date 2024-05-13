@@ -44,6 +44,13 @@ const TextStyle bigTextStyle = TextStyle(
   fontSize: 52,
 );
 
+/* Widget configuration */
+const double standartSpacerHeight = 30;
+
+const double mediumSpacerHeight = 20;
+
+const double smallerSpacerHeight = 10;
+
 /* Color configuration */
 const Color paletePink = Color(0xffFF128E);
 const Color paletePurple = Color(0xff8310DE);
