@@ -1,6 +1,7 @@
 /// Written by Juan Pablo Gutiérrez
 /// 27 - 06 - 2023
 
+import 'package:OpenXilogGo/widgets/standard_spacer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_date_range_picker/flutter_date_range_picker.dart';
@@ -81,10 +82,7 @@ class _DateTimeSelectorState extends State<DateTimeSelector> {
       };
     }
 
-     return {
-        "$initYear-$initMonth-$initDay",
-        "$finYear-$finMonth-$finday"
-      };
+    return {"$initYear-$initMonth-$initDay", "$finYear-$finMonth-$finday"};
   }
 
   @override
@@ -98,35 +96,41 @@ class _DateTimeSelectorState extends State<DateTimeSelector> {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
-        color: Colors.red,
+        color: paletePurple.withAlpha(150),
       ),
-      child: Column(
-        children: [
-          const BigText(
-            titleText: "Select date and time range",
-            textAlign: TextAlign.center,
-          ),
-          DateRangeField(
-            decoration: InputDecoration(labelText: "${dataRange}"),
-            pickerBuilder: (context, onDateRangeChanged) {
-              return DateRangePickerWidget(
-                doubleMonth: false,
-                maximumDateRangeLength: 8,
-                minimumDateRangeLength: 1,
-                initialDateRange: DateRange(DateTime(2022), DateTime(2023)),
-                disabledDates: [DateTime(2023, 11, 20)],
-                initialDisplayedDate: DateTime.now(),
-                onDateRangeChanged: (value) => setState(() {
-                  dataRange = value!;
-                }),
-                height: 340,
-              );
-            },
-          ),
-          (widget.requestType == RequestType.dateTime)
-              ? Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            const BigText(
+              titleText: "Select date and time range",
+              textAlign: TextAlign.center,
+            ),
+            const StandardSpacer(height: standartSpacerHeight),
+            DateRangeField(
+              decoration: InputDecoration(
+                label: Text(
+                  "${dataRange}",
+                  style: substitleStyle,
+                ),
+              ),
+              pickerBuilder: (context, onDateRangeChanged) {
+                return DateRangePickerWidget(
+                  doubleMonth: false,
+                  maximumDateRangeLength: 8,
+                  minimumDateRangeLength: 1,
+                  initialDateRange: DateRange(DateTime(2022), DateTime(2023)),
+                  disabledDates: [DateTime(2023, 11, 20)],
+                  initialDisplayedDate: DateTime.now(),
+                  onDateRangeChanged: (value) => setState(() {
+                    dataRange = value!;
+                  }),
+                  height: 340,
+                );
+              },
+            ),
+            (widget.requestType == RequestType.dateTime)
+                ? Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
@@ -158,21 +162,21 @@ class _DateTimeSelectorState extends State<DateTimeSelector> {
                         ],
                       ),
                     ],
-                  ),
-                )
-              : const Text(""),
-          ElevatedButton(
-            onPressed: () {
-              widget.onchanged(
-                  processTimeInput(dataRange, initialTime, lastTime));
+                  )
+                : const Text(""),
+            ElevatedButton(
+              onPressed: () {
+                widget.onchanged(
+                    processTimeInput(dataRange, initialTime, lastTime));
 
-              widget.controller.animatePanelToPosition(1,
-                  duration: const Duration(milliseconds: 225),
-                  curve: Curves.easeIn);
-            },
-            child: const Text("Submit"),
-          ),
-        ],
+                widget.controller.animatePanelToPosition(1,
+                    duration: const Duration(milliseconds: 225),
+                    curve: Curves.easeIn);
+              },
+              child: const Text("Submit"),
+            ),
+          ],
+        ),
       ),
     );
   }
