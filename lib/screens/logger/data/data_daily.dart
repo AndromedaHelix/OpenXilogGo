@@ -2,6 +2,12 @@
 /// 30 - 06 - 2023
 
 import 'package:OpenXilogGo/api/apimanager.dart';
+import 'package:OpenXilogGo/screens/logger/data/daily/daily_data_page.dart';
+import 'package:OpenXilogGo/screens/logger/data/logger/logger_data_page.dart';
+import 'package:OpenXilogGo/widgets/back_bar.dart';
+import 'package:OpenXilogGo/widgets/gradient_scaffold.dart';
+import 'package:OpenXilogGo/widgets/selection_button.dart';
+import 'package:OpenXilogGo/widgets/standard_spacer.dart';
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
@@ -36,7 +42,8 @@ class _DataDailyPageState extends State<DataDailyPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return GradientScaffold(
+      gradient: backGroundGradient,
       body: SlidingUpPanel(
         controller: controller,
         borderRadius: BorderRadius.circular(30),
@@ -72,72 +79,16 @@ class _DataDailyPageState extends State<DataDailyPage> {
                       itemBuilder: (context, index) {
                         return Column(
                           children: [
-                            Text("Channel Name: ${data[index]["channelName"].toString()}"),
-                            
-                            const Text("Daily Stats: "),
-                            SizedBox(
-                              height:
-                                  (MediaQuery.of(context).size.height / 1.2) /
-                                      1.2,
-                              child: ListView.builder(
-                                physics: const ScrollPhysics(),
-                                shrinkWrap: false,
-                                itemCount: data[index]["dailyStats"].length,
-                                itemBuilder: (context, secondIndex) {
-                                  return SizedBox(
-                                    height: (MediaQuery.of(context)
-                                                .size
-                                                .height /
-                                            1.2) /
-                                        1,
-                                    child: ListView.builder(
-                                      physics: const ScrollPhysics(),
-                                      shrinkWrap: false,
-                                      itemCount: data[index]["dailyStats"]
-                                              [secondIndex]
-                                          .length,
-                                      itemBuilder: (context, dataIndex) {
-                                        return Column(
-                                          children: [
-                                            const SizedBox(
-                                              height: 20,
-                                            ),
-                                            Container(
-                                              padding: const EdgeInsets.only(
-                                                  top: 8.0,
-                                                  bottom: 8.0,
-                                                  left: 10.0,
-                                                  right: 10.0),
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          30),
-                                                  color: Colors.blue),
-                                              child: Column(
-                                                children: [
-                                                  Text(
-                                                      "Date: ${data[index]["dailyStats"][secondIndex]["date"]}"),
-                                                  Text(
-                                                      "Min Time: ${data[index]["dailyStats"][secondIndex]["minTime"]}"),
-                                                  Text(
-                                                      "Max Time: ${data[index]["dailyStats"][secondIndex]["maxTime"]}"),
-                                                  Text(
-                                                      "Min Value: ${data[index]["dailyStats"][secondIndex]["minValue"]}"),
-                                                  Text(
-                                                      "Max Value: ${data[index]["dailyStats"][secondIndex]["maxValue"]}"),
-                                                  Text(
-                                                      "Totaliser: ${data[index]["dailyStats"][secondIndex]["totaliser"]}"),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    ),
-                                  );
-                                },
-                              ),
-                            ),
+                            SelectionButton(
+                                data: data,
+                                index: index,
+                                showUnit: false,
+                                nextWidgetScreen: DailyDataPage(
+                                  data: data,
+                                  index: index,
+                                  serialNumber: widget.serialNumber,
+                                )),
+                            const StandardSpacer(height: standartSpacerHeight),
                           ],
                         );
                       },
@@ -171,13 +122,8 @@ class _DataDailyPageState extends State<DataDailyPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const BackIcon(),
-                      Text(widget.serialNumber),
-                    ],
-                  ),
+                  BackBar(serialNumber: widget.serialNumber),
+                  const StandardSpacer(height: standartSpacerHeight),
                   DateTimeSelector(
                     serialNumber: widget.serialNumber,
                     requestType: RequestType.dateOnly,

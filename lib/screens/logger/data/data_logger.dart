@@ -12,7 +12,6 @@ import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 import '../../../api/apimanager.dart';
-import '../../../widgets/back_icon.dart';
 
 class DataLoggerPage extends StatefulWidget {
   final String serialNumber;
