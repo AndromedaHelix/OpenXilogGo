@@ -25,6 +25,11 @@ class IntroBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               BigText(titleText: "Welcome back", textAlign: TextAlign.center),
+              Icon(
+                Icons.menu,
+                color: Colors.white,
+                size: 30,
+              )
             ],
           ),
           const SizedBox(
